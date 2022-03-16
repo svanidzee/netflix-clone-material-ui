@@ -1,19 +1,15 @@
 import Head from "next/head";
 
+import Box from "@mui/material/Box";
+
 import Navbar from "../components/navbr/navbar";
 import Banner from "../components/banner/banner";
 import Card from "../components/card/card";
 import SectionCards from "../components/card/section-card";
 
-// import styles from "../styles/Home.module.css";
-
 import { getVideos } from "../lib/videos";
 
-import Box from "@mui/material/Box";
-
-//
 export async function getServerSideProps() {
-  //
   const disneyVideos = await getVideos("disney trailer");
   const productivityVideos = await getVideos("productivity");
   const travelVideos = await getVideos("travel");
@@ -28,8 +24,8 @@ export default function Home({
   productivityVideos,
 }) {
   console.log(disneyVideos);
+
   return (
-    // <Box className={styles.container}>
     <Box>
       <Head>
         <title>Netflix</title>

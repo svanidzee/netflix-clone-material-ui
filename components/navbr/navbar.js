@@ -1,5 +1,5 @@
-import * as React from "react";
 import { useState } from "react";
+
 import { useRouter } from "next/router";
 import NextLink from "next/link";
 import Image from "next/image";
@@ -11,27 +11,35 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 import { makeStyles } from "@mui/styles";
+import styled from "@emotion/styled";
+
+const StyledDropdown = styled.div`
+  position: absolute;
+  margin-left: auto;
+  margin-top: 0.5rem /* 8px */;
+  padding-top: 0.5rem /* 8px */;
+  padding-bottom: 0.5rem /* 8px */;
+  padding-right: 0.5rem;
+  background-color: rgb(20, 20, 20);
+  border-width: 1px;
+  color: rgba(255, 255, 255, 1);
+  border-radius: 0.25rem /* 4px */;
+
+  border-color: rgba(75, 85, 99, 1);
+
+  box-shadow: var(
+      0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04),
+      0 0 #0000
+    ),
+    var(--ring-shadow, 0 0 #0000),
+    var(
+      0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04)
+    );
+`;
 
 const useStyles = makeStyles({
-  navDropdown: {
-    position: "absolute",
-    marginLeft: "auto",
-    marginTop: "0.5rem",
-    paddingTop: "0.5rem",
-    paddingBottom: "0.5rem",
-    paddingRight: "0.5rem",
-    backgroundColor: "rgb(20, 20, 20)",
-    borderWidth: "1px",
-    color: "rgba(255, 255, 255, 1)",
-    borderRadius: "0.25rem",
-
-    borderColor: "rgba(75, 85, 99, 1)",
-
-    // boxShadow: var(--shadow30, 0 0 #0000), var(--ring-shadow, 0 0 #0000),
-    //   var(--shadow30);
-
-    // boxShadow: "(0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 0 #0000), var(--ring-shadow, 0 0 #0000), (0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04))
-  },
   linkName: {
     transitionProperty: "background-color, border-color, color, fill, stroke",
     transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
@@ -53,12 +61,7 @@ const useStyles = makeStyles({
     paddingtop: "0.5rem",
     paddingBottom: "0.5rem",
   },
-
-  //
   navContainer: {
-    // display: "flex",
-    // alignItems: "flex-end",
-    // justifyContent: "flex-end",
     marginLeft: "57rem",
   },
   usernameBtn: {
@@ -75,8 +78,6 @@ const useStyles = makeStyles({
     fontWeight: "600",
     lineHeight: "20px",
   },
-
-  //
   container: {
     color: "rgba(255, 255, 255, 1)",
     position: "fixed",
@@ -92,25 +93,18 @@ const useStyles = makeStyles({
   wrapper: {
     paddingLeft: "1rem",
     paddingRight: "1rem",
-    // display: "flex",
     padding: "1.25rem",
   },
   logoLink: {
-    // display: "flex",
-    // justifyContent: "start",
     fontWeight: 500,
     fontSize: "1rem",
-    // alignItems: "center",
     color: "rgba(255, 255, 255, 1)",
     marginBottom: "1rem",
-    // marginLeft: "-5rem",
   },
   logoWrapper: {
     color: "rgb(220, 38, 38)",
     width: "8rem",
   },
-
-  //
   navItems: {
     display: "flex",
     flexDirection: "row",
@@ -165,7 +159,6 @@ const navbar = (props) => {
         justifyContent="start"
         className={classes.wrapper}
       >
-        {/*  */}
         <Grid item>
           <Link className={classes.logoLink} href="/">
             <Box className={classes.logoWrapper}>
@@ -179,7 +172,6 @@ const navbar = (props) => {
           </Link>
         </Grid>
 
-        {/*  */}
         <Grid item>
           <ul className={classes.navItems}>
             <li className={classes.navItem} onClick={handleOnClickHome}>
@@ -191,7 +183,6 @@ const navbar = (props) => {
           </ul>
         </Grid>
 
-        {/*  */}
         <Grid item as="nav" className={classes.navContainer}>
           <Button
             variant="text"
@@ -209,14 +200,14 @@ const navbar = (props) => {
           </Button>
 
           {showDropdown && (
-            <Box className={classes.navDropdown}>
+            <StyledDropdown>
               <Box>
                 <NextLink href="/login">
                   <Link className={classes.linkName}>Sign out</Link>
                 </NextLink>
                 <Box className={classes.lineWrapper} />
               </Box>
-            </Box>
+            </StyledDropdown>
           )}
         </Grid>
       </Grid>
