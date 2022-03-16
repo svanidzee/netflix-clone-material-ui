@@ -39,18 +39,15 @@ const StyledDropdown = styled.div`
     );
 `;
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   linkName: {
+    ...theme.typography.linkName,
     transitionProperty: "background-color, border-color, color, fill, stroke",
     transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
     transitionDuration: "200ms",
     display: "block",
     paddingLeft: "0.5rem",
     paddingRight: "0.5rem",
-    color: "rgba(255, 255, 255, 1)",
-
-    fontSize: "1rem",
-    lineHeight: "1.25rem",
     borderRadius: "0.25rem",
     cursor: "pointer",
     "&:hover": {
@@ -65,21 +62,17 @@ const useStyles = makeStyles({
     marginLeft: "57rem",
   },
   usernameBtn: {
+    color: theme.palette.primary.light,
     display: "flex",
     alignItems: "center",
     overflow: "hidden",
-    color: "rgba(255, 255, 255, 1)",
     backgroundColor: "transparent",
   },
   username: {
-    fontSize: "16px",
-    textTransform: "none",
-    fontFamily: "Roboto Slab",
-    fontWeight: "600",
-    lineHeight: "20px",
+    ...theme.typography.username,
   },
   container: {
-    color: "rgba(255, 255, 255, 1)",
+    color: theme.palette.primary.light,
     position: "fixed",
     top: "0px",
     left: "50px",
@@ -96,36 +89,29 @@ const useStyles = makeStyles({
     padding: "1.25rem",
   },
   logoLink: {
-    fontWeight: 500,
-    fontSize: "1rem",
-    color: "rgba(255, 255, 255, 1)",
+    ...theme.typography.logoLink,
     marginBottom: "1rem",
   },
   logoWrapper: {
-    color: "rgb(220, 38, 38)",
+    color: theme.palette.error.light,
     width: "8rem",
   },
   navItems: {
+    ...theme.typography.navItems,
     display: "flex",
     flexDirection: "row",
     width: "100%",
     marginLeft: "3.5rem",
-    fontSize: "0.875rem",
-    fontSize: "1rem",
-
-    lineHeight: "1.25rem",
-    listStyle: "none",
   },
   navItem: {
-    fontWeight: "600",
-    fontSize: "1rem",
+    ...theme.typography.navItem,
     cursor: "pointer",
     marginRight: "1.15rem",
   },
   navItem2: {
     cursor: "pointer",
   },
-});
+}));
 
 const navbar = (props) => {
   const classes = useStyles();

@@ -53,7 +53,7 @@ const StyledText = styled.span`
   text-align: center;
 `;
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   container: {
     width: "100%",
     height: "80vh",
@@ -75,42 +75,24 @@ const useStyles = makeStyles({
     marginTop: "6rem",
   },
   firstLetter: {
-    fontSize: "3.75rem",
-    lineHeight: 1,
-    color: "rgb(220, 38, 38)",
-    fontWeight: 800,
-    fontFamily: "Roboto Slab",
+    ...theme.typography.firstLetter,
   },
   series: {
-    fontSize: "0.875rem",
-    lineHeight: "1.25rem",
-    color: "rgb(156, 163, 175)",
-    alignSelf: "center",
-    fontFamily: "Roboto Slab",
+    ...theme.typography.series,
   },
   title: {
-    fontSize: "60px",
-    lineHeight: "60px",
-    fontWeight: 800,
-    color: "rgba(255, 255, 255, 1)",
-    WebkitTextStroke: "2px rgb(0, 0, 0)",
-    fontFamily: "Roboto Slab",
+    ...theme.typography.title,
     maxWidth: "28rem",
   },
   subTitle: {
-    fontSize: "24px",
-    lineHeight: "32px",
-    color: "rgba(255, 255, 255, 1)",
-    WebkitTextStroke: "1px gray",
-    fontFamily: "Roboto Slab",
-    fontWeight: 600,
+    ...theme.typography.subTitle,
   },
   playBtnWrapper: {
     display: "flex",
     flexDirection: "row",
     width: "100%",
   },
-});
+}));
 
 const Banner = (props) => {
   const classes = useStyles();
