@@ -1,51 +1,48 @@
-// import { useState } from "react";
-// import Image from "next/image";
+import { useState } from "react";
 
-// import { motion } from "framer-motion";
-// import cls from "classnames";
+import Box from "@mui/material/Box";
 
-// import styles from "./card.module.css";
+import { useStyles, StyledImage, StyledMotion } from "./card-styles";
 
-// const card = (props) => {
-//   const {
-//     imgUrl = "https://images.unsplash.com/photo-1615413250263-bb04cc0a3988?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHBpeGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60",
-//     size = "medium",
-//     id,
-//   } = props;
+const Card = (props) => {
+  const {
+    imgUrl = "https://images.unsplash.com/photo-1485846234645-a62644f84728?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1340&q=80",
+    size = "medium",
+    id,
+  } = props;
 
-//   const [src, setSrc] = useState(imgUrl);
+  const classes = useStyles();
 
-//   const classMap = {
-//     large: styles.lgItem,
-//     medium: styles.mdItem,
-//     small: styles.smItem,
-//   };
+  const [imgSrc, setImgSrc] = useState(imgUrl);
 
-//   const handleOnError = () => {
-//     console.log("error");
-//     setSrc(
-//       "https://images.unsplash.com/photo-1615413250263-bb04cc0a3988?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHBpeGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60"
-//     );
-//   };
+  const classMap = {
+    large: classes.lgItem,
+    medium: classes.mdItem,
+    small: classes.smItem,
+  };
 
-//   const scale = id === 0 ? { scaleY: 1.1 } : { scale: 1.1 };
+  // set image path if we have wrong default image props
+  const handleOnError = () => {
+    console.log("error");
+    setImgSrc(
+      "https://images.unsplash.com/photo-1485846234645-a62644f84728?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1340&q=80"
+    );
+  };
 
-//   return (
-//     <div className={styles.container}>
-//       <motion.div
-//         className={cls(styles.imgMotionWrapper, classMap[size])}
-//         whileHover={{ ...scale }}
-//       >
-//         <Image
-//           src={src}
-//           alt="Card"
-//           layout="fill"
-//           className={styles.cardImg}
-//           onError={handleOnError}
-//         />
-//       </motion.div>
-//     </div>
-//   );
-// };
+  const scale = id === 0 ? { scaleY: 1.1 } : { scale: 1.1 };
 
-// export default card;
+  return (
+    <Box className={classes.container}>
+      <StyledMotion className={classMap[size]} whileHover={{ ...scale }}>
+        <StyledImage
+          src={imgSrc}
+          alt="Card image"
+          layout="fill"
+          onError={handleOnError}
+        />
+      </StyledMotion>
+    </Box>
+  );
+};
+
+export default Card;

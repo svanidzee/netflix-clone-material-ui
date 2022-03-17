@@ -1,22 +1,26 @@
-// import Card from "./card";
+import Card from "../card/card";
 
-// import styles from "./section-card.module.css";
+import { Box, Typography } from "@mui/material";
 
-// const SectionCards = (props) => {
-//   const { title, videos = [], size } = props;
-//   console.log({ videos });
+import { useStyles } from "./section-styles";
 
-//   return (
-//     <section className={styles.container}>
-//       <h2 className={styles.title}>{title}</h2>
-//       <div className={styles.cardWrapper}>
-//         {/*  */}
-//         {videos.map((video, idx) => (
-//           <Card id={idx} imgUrl={video.imgUrl} size={size} />
-//         ))}
-//       </div>
-//     </section>
-//   );
-// };
+const SectionCard = (props) => {
+  const { title, videos, size } = props;
 
-// export default SectionCards;
+  const classes = useStyles();
+
+  return (
+    <Box as="section" className={classes.container}>
+      <Typography variant="h2" className={classes.title}>
+        {title}
+      </Typography>
+      <Box className={classes.cardWrapper}>
+        {videos.map((video, idx) => {
+          return <Card id={idx} imgUrl={video.imgUrl} size={size} />;
+        })}
+      </Box>
+    </Box>
+  );
+};
+
+export default SectionCard;

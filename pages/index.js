@@ -10,21 +10,13 @@ import SectionCards from "../components/card/section-card";
 import { getVideos } from "../lib/videos";
 
 export async function getServerSideProps() {
-  const disneyVideos = await getVideos("disney trailer");
-  const productivityVideos = await getVideos("productivity");
-  const travelVideos = await getVideos("travel");
-  // const popularVideos = await getVideos("disney trailer");
+  const disneyVideos = getVideos();
 
-  return { props: { disneyVideos, travelVideos, productivityVideos } };
+  return { props: { disneyVideos } };
 }
 
-export default function Home({
-  disneyVideos,
-  travelVideos,
-  productivityVideos,
-}) {
-  console.log(disneyVideos);
-
+export default function ({ disneyVideos }) {
+  console.log({ disneyVideos });
   return (
     <Box>
       <Head>
@@ -38,6 +30,15 @@ export default function Home({
         subTitle="a very cute dog"
         imgUrl="/static/clifford.webp"
       />
+
+      <Box
+        sx={{
+          mt: "1.5rem",
+        }}
+      >
+        <SectionCards title="Disney" videos={disneyVideos} size="large" />
+        <SectionCards title="Disney" videos={disneyVideos} size="medium" />
+      </Box>
     </Box>
   );
 }

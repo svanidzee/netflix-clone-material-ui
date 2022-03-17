@@ -7,24 +7,24 @@ const theme = createTheme({
     // global styles
     MuiCssBaseline: {
       styleOverrides: {
-        body: {
-          padding: 0,
-          margin: 0,
-          fontFamily: "Roboto Slab",
-          // fontFamily: "'M PLUS Rounded 1c'",
-          backgroundColor: "#141414",
-          color: "white",
-          overflowX: "hidden",
-        },
-        WebkitScrollbar: {
-          width: "0px",
-          background: "transparent",
-        },
-        a: {
-          color: "inherit",
-          textDecoration: "none",
-          outline: "0px",
-        },
+        // body: {
+        //   padding: 0,
+        //   margin: 0,
+        //   fontFamily: "Roboto Slab",
+        //   // fontFamily: "'M PLUS Rounded 1c'",
+        //   backgroundColor: "#141414",
+        //   color: "white",
+        //   overflowX: "hidden",
+        // },
+        // WebkitScrollbar: {
+        //   width: "0px",
+        //   background: "transparent",
+        // },
+        // a: {
+        //   color: "inherit",
+        //   textDecoration: "none",
+        //   outline: "0px",
+        // },
       },
     },
     MuiButton: {
